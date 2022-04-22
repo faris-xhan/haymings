@@ -48,7 +48,12 @@ const encode = async (data_bits, isOdd = false) => {
     // Again arrays starts at 0; and mod 2 basically would return either 0 or 1
     // if the ones were odd it would return 1 other wise it would return 0
     // if its odd parity we would like to add 1 otherwise we would its even
-    hammingCode[parityPosition - 1] = onesCount % 2;
+
+    if (isOdd) {
+      hammingCode[parityPosition - 1] = onesCount % 2 === 0 ? 1 : 0;
+    } else {
+      hammingCode[parityPosition - 1] = onesCount % 2;
+    }
   }
 
   return {

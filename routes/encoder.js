@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
-  const { data } = req.query;
+  const { data, parity } = req.query;
 
   try {
     if (!data) {
@@ -16,7 +16,8 @@ router.get('/', async (req, res, next) => {
       });
     }
 
-    const hammingCode = await HammingCode.encode(dataBits);
+    const dataBits = data.split('').map((bit) => parseInt(bit));
+    const hammingCode = await HammingCode.encode(dataBits, parity);
     return res.json(hammingCode);
   } catch (error) {
     next(error);
