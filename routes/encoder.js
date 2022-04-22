@@ -6,7 +6,11 @@ router.get('/', async (req, res, next) => {
   const { data } = req.query;
 
   try {
-    if (data.search(/[^10]+/g) > -1) {
+    if (!data) {
+      return res.status(422).json({
+        error: 'Data fields can not be empty',
+      });
+    } else if (data.search(/[^10]+/g) > -1) {
       return res.status(422).json({
         error: 'Invalid data, data must not contain anything other than 1 or 0',
       });
