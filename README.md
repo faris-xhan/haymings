@@ -12,3 +12,4 @@
 - :heavy_check_mark: Add a README
 - :black_large_square: Add decoder.
 - :black_large_square: Add error checker.
+- :black_large_square: Add Home page.
