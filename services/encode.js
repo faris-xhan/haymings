@@ -52,7 +52,7 @@ const encode = async (data_bits, isOdd = false) => {
   }
 
   return {
-    code: hammingCode.join(''),
+    code: hammingCode.reverse().join(''),
     codeArray: hammingCode,
     redundantBitsSize,
     hammingCodeSize,
